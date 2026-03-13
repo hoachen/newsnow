@@ -51,6 +51,17 @@ export function getServer() {
     }
   })
 
+  // Add dummy handlers for resources and prompts to satisfy some clients
+  server.server.setRequestHandler(z.object({
+    method: z.literal("resources/list"),
+    params: z.any().optional(),
+  }) as any, async () => ({ resources: [] }))
+
+  server.server.setRequestHandler(z.object({
+    method: z.literal("prompts/list"),
+    params: z.any().optional(),
+  }) as any, async () => ({ prompts: [] }))
+
   server.server.onerror = console.error.bind(console)
 
   return server
