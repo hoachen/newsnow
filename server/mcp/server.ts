@@ -38,6 +38,19 @@ export function getServer() {
     },
   )
 
+  server.server.setRequestHandler(z.object({
+    method: z.literal("completion/complete"),
+    params: z.any(),
+  }) as any, async () => {
+    return {
+      completion: {
+        values: [],
+        total: 0,
+        hasMore: false,
+      },
+    }
+  })
+
   server.server.onerror = console.error.bind(console)
 
   return server

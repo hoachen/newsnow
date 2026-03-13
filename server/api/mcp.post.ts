@@ -6,7 +6,9 @@ export default defineEventHandler(async (event) => {
   const res = event.node.res
   const server = getServer()
   try {
-    const transport: StreamableHTTPServerTransport = new StreamableHTTPServerTransport({ sessionIdGenerator: undefined })
+    const transport: StreamableHTTPServerTransport = new StreamableHTTPServerTransport({
+      sessionIdGenerator: () => Math.random().toString(36).substring(7),
+    })
     transport.onerror = console.error.bind(console)
     await server.connect(transport)
     await transport.handleRequest(req, res, await readBody(event))

@@ -23,7 +23,8 @@ English | [简体中文](README.zh-CN.md) | [日本語](README.ja-JP.md)
       "command": "npx",
       "args": [
         "-y",
-        "newsnow-mcp-server"
+        "tsx",
+        "https://raw.githubusercontent.com/hoachen/newsnow/main/scripts/mcp-bridge.ts"
       ],
       "env": {
         "BASE_URL": "https://newsnow.busiyi.world"
@@ -32,6 +33,7 @@ English | [简体中文](README.zh-CN.md) | [日本語](README.ja-JP.md)
   }
 }
 ```
+*Note: If the standard `newsnow-mcp-server` has connection issues, using the bridge script above is recommended as it uses the latest official SDK.*
 You can change the `BASE_URL` to your own domain.
 
 ## Deployment
