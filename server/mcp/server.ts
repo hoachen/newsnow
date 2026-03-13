@@ -1,14 +1,14 @@
 import { z } from "zod"
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js"
-import packageJSON from "../../package.json"
+import { Version } from "../../shared/consts"
 import { description } from "./desc.js"
 
 export function getServer() {
   const server = new McpServer(
     {
       name: "NewsNow",
-      version: packageJSON.version,
+      version: Version,
     },
     { capabilities: { logging: {} } },
   )
